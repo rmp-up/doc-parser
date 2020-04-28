@@ -1,0 +1,20 @@
+{
+  "name": "rmp-up/doc-parser",
+  "description": "Yet another doc-comment parser helper",
+  "autoload": {
+    "psr-4": {
+      "RmpUp\\Doc\\": "lib/"
+    }
+  },
+  "license": "proprietary",
+  "require": {
+    "php": ">= 7.0",
+    "ext-simplexml": "*",
+    "league/commonmark": "^0.18.1",
+    "michelf/php-markdown": ">=1.0 <2.0.0",
+    "zendframework/zend-code": ">=3.0 <4.0.0",
+    "phpdocumentor/reflection-docblock": "^5.1",
+    "mikey179/vfsstream": "^1.6",
+    "gherkins/regexpbuilderphp": "^0.8.0"
+  }
+}
