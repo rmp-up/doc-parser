@@ -105,7 +105,7 @@ class Comment extends HtmlNode
 
         $description = $this->docBlock()->getDescription();
         // Unescape possibly escaped comment blocks
-        $description = preg_replace('@(\s*)\*\\\/(\s*)$@m', '\1*/', $description);
+        $description = preg_replace('@(\s*)\*\\\/(\s*)$@m', '\1*/', (string) $description);
 
         $markdown .= $description;
 
