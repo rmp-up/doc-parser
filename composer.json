@@ -10,11 +10,8 @@
   "require": {
     "php": ">= 7.0",
     "ext-simplexml": "*",
-    "league/commonmark": "^0.18.1",
     "michelf/php-markdown": ">=1.0 <2.0.0",
-    "laminas/laminas-code": ">=3.0 <4.0.0",
     "phpdocumentor/reflection-docblock": "4.3.* || 5.*",
-    "mikey179/vfsstream": "^1.6",
     "gherkins/regexpbuilderphp": "^0.8.0"
   }
 }
