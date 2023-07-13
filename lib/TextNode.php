@@ -114,7 +114,7 @@ class TextNode
     public function __toString()
     {
         if ($this->regex()->getLiteral()) {
-            return implode(PHP_EOL, $this->findAll());
+            return implode(PHP_EOL, $this->resultSet()->getArrayCopy());
         }
 
         return $this->text;
@@ -133,4 +133,34 @@ class TextNode
 
         return $this->regexBuilder;
     }
+
+	/**
+	 * Extract information from string using asterisks
+	 *
+	 * @param string $expression A pattern with asterisk(s) as wildcard
+	 * @return ResultSet<string,ResultSet> Matches with complete match as key.
+	 */
+	public function glob(string $expression): ResultSet
+	{
+		$expression = strtr(
+			preg_quote($expression, '@'),
+			[
+				'\\*' => '(.*)',
+			]
+		);
+
+		$matches = [];
+		preg_match_all('@' . $expression . '@', (string) $this, $matches, PREG_SET_ORDER);
+
+		$glob = [];
+		foreach ($matches as $match) {
+			$glob[array_shift($match)] = current($match);
+		}
+
+		return new ResultSet($glob);
+	}
+
+	public function get(string $expression): string {
+		return (string) $this->glob($expression)->first();
+	}
 }
